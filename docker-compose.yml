@@ -1,0 +1,47 @@
+version: '2'
+
+services:
+  webServer1:
+    image: apache_confd
+    environment:
+      - server_number=1
+    expose:
+      - "5000"
+    volumes:
+      - apache_data:/apache_data
+
+  webServer2:
+    image: apache_confd
+    environment:
+      - server_number=2
+    expose:
+      - "5000"
+    volumes:
+      - apache_data:/apache_data
+
+  webServer3:
+    image: apache_confd
+    environment:
+      - server_number=3
+    expose:
+      - "5000"
+    volumes:
+      - apache_data:/apache_data
+
+  proxy:
+    build:
+      context:  ./NginxContainer
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    links:
+      - webServer1
+      - webServer2
+      - webServer3
+    volumes:
+      - nginx_data:/nginx_data
+
+volumes:
+    apache_data:
+
+    nginx_data:

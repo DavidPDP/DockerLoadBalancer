@@ -1,0 +1,10 @@
+exec: [ "/usr/local/apache2/bin/httpd"]
+data_sources: [ "defaults", "file", "environment" ]
+template_sources: [ "file" ]
+
+environments: 
+
+  production:
+
+    index.erb:
+      target: /usr/local/apache2/htdocs/index.html

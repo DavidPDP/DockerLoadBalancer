@@ -1,0 +1,3 @@
+[template]
+src = "index.html.tmpl"
+dest = "/usr/local/apache2/htdocs/index.html"
