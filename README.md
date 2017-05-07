@@ -15,7 +15,7 @@ Se debe automatizar el despliegue de una infraestructura que posea unos contened
 ## Prerrequisitos
 * Docker
 
-## Solución
+## Pasos Para Automatizar
 Para el despliegue de la infraestrcutura se necesita automatizar las siguientes acciones:
 
 ### Servidores Web
@@ -61,3 +61,28 @@ Finalmente, iniciar el servicio de Nginx
 ```bash
 service nginx start
 ```
+### Levantar Contenedor
+Para levantar un solo contenedor se debe proceder a indicarle que se ejecute en modo detached, realizar el mapeo de puertos y asignarle un volumen al contenedor como se puede observar en el siguiente comando:
+
+```bash
+docker run -d -p 80:80 -v /webapp my_image
+```
+## Automatizado
+Para automatizar todo el despliegue de la infraestructura propuesta teniendo en cuenta los pasos a automatizar se procedió a las siguientes acciones:
+
+### Vista General De La Estructura Del Proyecto
+A continuación se presenta la vista general de la estructura del proyecto:
+
+### Servidor Web
+Para crear los 3 servidores web se procedió a eligir httpd para esto se descargó desde DockerHub la imagen con el siguiente comando:
+
+```bash
+docker pull httpd
+```
+Surge un problema con Docker y es la parametrización de los archivos en el tiempo de ejecución del contenedor. Esto se debe a que en tiempo de construcción se invierte un tiempo considerable para crear la imagen, si este tiempo es empleado para paremetrizar los contenedores, pues habrá un desperdicio de recursos debido a que cada vez que se quiera cambiar la parametrización se deberá construir la imagen (teniendo en cuenta que en la construcción de la imagen se instala los sistemas robustos del contenedor). Es por lo anterior que el momento optimo para realizar la parametrización es cuando se va a ejecutar un contenedor, además sería lo más conveniente puesto que si se quiere ejecutar múltiples contenedores cada uno tiene la posibilidad de llevar una parametrización diferente. A este problema se le añade que Docker no ofrece esta funcionalidad por lo que se tiene que recurrir a herramientas que permitan realizarlo. En este caso se seleccionó Confd, es una herramienta de gestión de la configuración de peso ligero. (Más adelante se explicará los problemas por los que se seleccionó esta herramienta).
+
+Por lo tanto, se debe proceder a crear otra imagen que tenga como base la descargada anteriormente para incorporar Confd. A continuación se pueden consultar los archivos utilizados para lograr esto.
+
+DockerFile
+En este 
+
