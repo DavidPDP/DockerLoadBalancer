@@ -87,4 +87,23 @@ docker pull httpd
 
 <a href="https://github.com/DavidPDP/DockerLoadBalancer/blob/master/ApacheContainer/Confd/Dockerfile"><b>DockerFile servidor web con Confd</b></a>
 
+<p align=justify> En el Dockerfile podemos observar cuatro instrucciones fundamentales. La primera la instalación de Confd y ubicación en la carpeta /usr/local/bin/confd. La segunda es el copiado que se realiza sobre un archivo .sh, que se encarga de mostrar todas las variables del entorno, de definir las variables a parametrizar, de probarlas y finalmente de iniciar el servicio del servidor web. La tercera la de asignación de permisos y finalmente el comando de ejecución del contenedor el cual se encarga de ejecutar el archivo sh. A continuación se puede ver en más detalle este archivo</p>
+
+<a href="https://github.com/DavidPDP/DockerLoadBalancer/blob/master/ApacheContainer/Confd/files/start.sh"><b>start.sh</b></a>
+
+Por último se procede a definir en los archivos que se quieren parametrizar la siguiente estructura.
+1) Los archivos que vayan a contener las variables deben tener extensión .tmpl, por organización se almacenan en una carpeta llamada templates.
+2) Para definir una variable dentro del archivo se debe definir con el siguiente formato.
+```bash
+{{ getenv "[NameVariable]" }} // Nota los corchetes solo son delimitadores para el ejemplo se deben obviar al momento de establecer la variable.
+```
+3) Finalmente se debe crear un archivo con la extensión .toml donde se le especifica a la herramienta donde se encuentra el archivo templates y donde se almacenarán dentro del contenedor.
+
+Con lo anterior se finaliza la configuración y preparación de la herramienta Confd y de los archivos con las variables definidas para la parametrización que se realizará en Docker run time.
+
+### Balanceador De Cargas
+Para 
+
+
+
 
