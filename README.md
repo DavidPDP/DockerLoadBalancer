@@ -159,20 +159,26 @@ A continuación se muestran los pantallazos del funcionamiento de la solución y
 Docker images:
 ![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen1.png)
 
+
 Docker volumes:
 ![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen2.png)
+
 
 Ejecución Docker-compose:
 ![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen3.png)
 
+
 Redireccionamiento Server 1:
 ![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen4.png)
+
 
 Redireccionamiento Server 3:
 ![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen5.png)
 
+
 Redireccionamiento Server 2:
 ![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen6.png)
+
 
 Peticiones Recibidas Por El Balanceador:
 ![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen7.png)
