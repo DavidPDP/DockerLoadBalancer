@@ -184,7 +184,9 @@ Peticiones Recibidas Por El Balanceador:
 ![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen7.png)
 
 Comprobación De Asignación De Volúmenes:
-![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen7.png)
+![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen8.png)
+
+![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen9.png)
 
 ## Inconvenientes
 A lo largo del desarrollo de esta solución se encontraron diferentes problemas:
