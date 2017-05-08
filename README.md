@@ -126,11 +126,19 @@ docker run -d -p 5000:80 -e server_number="2" apache_confd
 docker run -d -p 5000:80 -e server_number="3" apache_confd
 docker run -d -p 8080:80  dockerloadbalancer_proxy
 ```
-A esto añadiendole la creación de los volúmenes y asignación misma a los comandos.
+A esto añadiendole la creación de los volúmenes, asignación misma a los comandos y la escalabilidad del sistema.
 
 Para solucionar esto se procede a crear el compose que nos permitirá el despliegue de cada uno de los contenedores, además que permite asignarle las variables del entorno que se setearan dentro de los archivos por medio de la herramienta Confd. 
 
 <a href="https://github.com/DavidPDP/DockerLoadBalancer/blob/master/docker-compose.yml"><b>docker-compose.yml</b></a>
+
+Para ejecutar el docker compose se sigue procede a ejecutar los siguientes comandos:
+
+```docker
+docker-compose build --no-cache
+docker-compose up
+```
+
 
 ### Gestión de Volúmenes
 <p align=justify> Para la gestión de los volúmenes de los contenedores se procedió a definir que los contenedores web compartirán un mismo volúmen para el almacenamiento de datos o de archivos que sean relevantes como los de configuración, mientras que el contenedor del balanceador se le asignó un volúmen diferente para agregar un poco de seguridad. La creación de los volúmenes se encuentra en la misma definición del archivo docker-compose.yml y se definen como se sigue:</p>
@@ -143,9 +151,9 @@ volumes:
       - [NameVolume]:[Path]
 ```
 ### Resultados 
-A continuación se muestran los pantallazos del funcionamiento de la solución:
+A continuación se muestran los pantallazos del funcionamiento de la solución y de aspectos relevantes:
 
-
+[alt!]()
 
 
 
