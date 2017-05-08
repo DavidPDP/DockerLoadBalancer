@@ -102,7 +102,56 @@ Por último se procede a definir en los archivos que se quieren parametrizar la 
 Con lo anterior se finaliza la configuración y preparación de la herramienta Confd y de los archivos con las variables definidas para la parametrización que se realizará en Docker run time.
 
 ### Balanceador De Cargas
-Para 
+Para el balanceador de cargas se hizo uso de Nginx, un servidor HTTP el cual puede ser configurado para realizar esta funcionalidad. Para esto se descargó la imagen de nginx con el siguiente comando:
+
+```bash
+docker pull nginx
+```
+<p align=justify> Debido a que la imagen ya contiene el nginx previamente instalado entonces los únicos pasos a realizar sería la configuración del mismo como balanceador de cargas. A continuación se muestra la el archivo de configuración del nginx:</p>
+
+<a href="https://github.com/DavidPDP/DockerLoadBalancer/blob/master/NginxContainer/nginx.conf"><b>nginx.conf</b></a>
+
+En este archivo se definen los servidores a los cuales el balanceador puede redireccionar las peticiones y configura el Nginx para que pueda recibir conexiones remotas.
+
+Finalmente se crea el Dockerfile teniendo la imagen base (nginx) descargada anteriormente y se procede a cambiar el archivo de configuración por defecto de Nginx por el nuevo que configura al Nginx como balanceador de cargas. También se agrega al archivo de configuración el comando <b>daemon off</b> que permita que el Nginx se ejecute en foreground y no se detenga.
+
+<a href="https://github.com/DavidPDP/DockerLoadBalancer/blob/master/NginxContainer/Dockerfile"><b>Dockerfile Nginx</b></a>
+
+### Automatización Infraestructura
+Una vez realizado todos los pasos anteriores ya se puede automatizar el despliegue de la infraestructura deseada. El primer problema que se encuentra aquí es el depliegue por comando de cada contenedor. Como podemos ver a continuación se debería realizar los siguientes comandos cada vez que se quisiera levantar la infraestrcutura deseada:
+
+```docker
+docker run -d -p 5000:80 -e server_number="1" apache_confd
+docker run -d -p 5000:80 -e server_number="2" apache_confd
+docker run -d -p 5000:80 -e server_number="3" apache_confd
+docker run -d -p 8080:80  dockerloadbalancer_proxy
+```
+A esto añadiendole la creación de los volúmenes y asignación misma a los comandos.
+
+Para solucionar esto se procede a crear el compose que nos permitirá el despliegue de cada uno de los contenedores, además que permite asignarle las variables del entorno que se setearan dentro de los archivos por medio de la herramienta Confd. 
+
+<a href="https://github.com/DavidPDP/DockerLoadBalancer/blob/master/docker-compose.yml"><b>docker-compose.yml</b></a>
+
+### Gestión de Volúmenes
+<p align=justify> Para la gestión de los volúmenes de los contenedores se procedió a definir que los contenedores web compartirán un mismo volúmen para el almacenamiento de datos o de archivos que sean relevantes como los de configuración, mientras que el contenedor del balanceador se le asignó un volúmen diferente para agregar un poco de seguridad. La creación de los volúmenes se encuentra en la misma definición del archivo docker-compose.yml y se definen como se sigue:</p>
+
+```docker
+volumes:
+    [NameVolume]:
+//Dentro de la declaración de los contenedores
+volumes:
+      - [NameVolume]:[Path]
+```
+### Resultados 
+A continuación se muestran los pantallazos del funcionamiento de la solución:
+
+
+
+
+
+
+
+
 
 
 
