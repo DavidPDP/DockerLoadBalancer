@@ -79,10 +79,12 @@ Para crear los 3 servidores web se procedió a eligir httpd para esto se descarg
 ```bash
 docker pull httpd
 ```
-<p align=justify> Surge un problema con Docker y es la parametrización de los archivos en el tiempo de ejecución del contenedor. Esto se debe a que en tiempo de construcción se invierte un tiempo considerable para crear la imagen, si este tiempo es empleado para paremetrizar los contenedores, pues habrá un desperdicio de recursos debido a que cada vez que se quiera cambiar la parametrización se deberá construir la imagen (teniendo en cuenta que en la construcción de la imagen se instala los sistemas robustos del contenedor). Es por lo anterior que el momento optimo para realizar la parametrización es cuando se va a ejecutar un contenedor, además sería lo más conveniente puesto que si se quiere ejecutar múltiples contenedores cada uno tiene la posibilidad de llevar una parametrización diferente. A este problema se le añade que Docker no ofrece esta funcionalidad por lo que se tiene que recurrir a herramientas que permitan realizarlo. En este caso se seleccionó Confd, es una herramienta de gestión de la configuración de peso ligero. (Más adelante se explicará los problemas por los que se seleccionó esta herramienta).
+<p align=justify> Surge un problema con Docker y es la parametrización de los archivos en el tiempo de ejecución del contenedor. Esto se debe a que en tiempo de construcción se invierte un tiempo considerable para crear la imagen, si este tiempo es empleado para paremetrizar los contenedores, pues habrá un desperdicio de recursos debido a que cada vez que se quiera cambiar la parametrización se deberá construir la imagen (teniendo en cuenta que en la construcción de la imagen se instala los sistemas robustos del contenedor). Un ejemplo de esto se puede observar si queremos que los contenedores desplegados accedan a una base de datos o a diferentes servicios REST. <br> Es por lo anterior que el momento optimo para realizar la parametrización es cuando se va a ejecutar un contenedor (Docker run time), además sería lo más conveniente puesto que si se quiere ejecutar múltiples contenedores cada uno tiene la posibilidad de llevar una parametrización diferente. A este problema se le añade que Docker no ofrece esta funcionalidad por lo que se tiene que recurrir a herramientas externas que permitan realizarlo. En este caso se seleccionó Confd, la cual es una herramienta de gestión de la configuración de peso ligero. (Más adelante se explicará los problemas por los que se seleccionó esta herramienta y no otra).
+</p>
 
-Por lo tanto, se debe proceder a crear otra imagen que tenga como base la descargada anteriormente para incorporar Confd. A continuación se pueden consultar los archivos utilizados para lograr esto.</p>
+### Condiguración de Confd
+<p align=justify> Para realizar la configuración de Confd se debe proceder primero a realizar su instalación. Para esto se utilizará la imagen base (httpd) descargada con el comando mencionado anteriormente. A continuación se muestra el Dockerfile empleado para configurar Confd.</p>
 
-DockerFile
-En este 
+<a href="https://github.com/DavidPDP/DockerLoadBalancer/blob/master/ApacheContainer/Confd/Dockerfile"><b>DockerFile servidor web con Confd</b></a>
+
 
