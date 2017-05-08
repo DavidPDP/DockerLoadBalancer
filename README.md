@@ -6,6 +6,7 @@
 ## Problema 
 Se debe automatizar el despliegue de una infraestructura que posea unos contenedores web y un contenedor que se encargue del balanceo de cargas. Esto se puede observar en el siguiente diagrama de deployment:
 
+[alt!](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/diagrama_despliegue.png)
 
 ## Objetivos 
 * Realizar de forma autónoma el aprovisionamiento automático de infraestructura.
@@ -72,6 +73,8 @@ Para automatizar todo el despliegue de la infraestructura propuesta teniendo en 
 
 ### Vista General De La Estructura Del Proyecto
 A continuación se presenta la vista general de la estructura del proyecto:
+
+[alt!](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/tree)
 
 ### Servidor Web
 Para crear los 3 servidores web se procedió a eligir httpd para esto se descargó desde DockerHub la imagen con el siguiente comando:
@@ -153,14 +156,23 @@ volumes:
 ### Resultados 
 A continuación se muestran los pantallazos del funcionamiento de la solución y de aspectos relevantes:
 
-[alt!]()
+Docker images:
+[alt!](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen1.png)
 
+Docker volumes:
+[alt!](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen2.png)
 
+Ejecución Docker-compose:
+[alt!](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen3.png)
 
+Redireccionamiento Server 1:
+[alt!](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen4.png)
 
+Redireccionamiento Server 3:
+[alt!](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen5.png)
 
+Redireccionamiento Server 2:
+[alt!](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen6.png)
 
-
-
-
-
+Peticiones Recibidas Por El Balanceador:
+[alt!](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/screen7.png)
