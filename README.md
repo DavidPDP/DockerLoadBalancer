@@ -6,7 +6,7 @@
 ## Problema 
 Se debe automatizar el despliegue de una infraestructura que posea unos contenedores web y un contenedor que se encargue del balanceo de cargas. Esto se puede observar en el siguiente diagrama de deployment:
 
-[alt!](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/diagrama_despliegue.png)
+[alt!](Images/diagrama_despliegue.png)
 
 ## Objetivos 
 * Realizar de forma autónoma el aprovisionamiento automático de infraestructura.
