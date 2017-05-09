@@ -5,28 +5,22 @@ services:
     image: apache_confd
     environment:
       - server_number=1
-    expose:
-      - "5000"
     volumes:
-      - apache_data:/apache_data
+      - apache_data1:/usr/local/apache2/htdocs
 
   webServer2:
     image: apache_confd
     environment:
       - server_number=2
-    expose:
-      - "5000"
     volumes:
-      - apache_data:/apache_data
+      - apache_data2:/usr/local/apache2/htdocs
 
   webServer3:
     image: apache_confd
     environment:
       - server_number=3
-    expose:
-      - "5000"
     volumes:
-      - apache_data:/apache_data
+      - apache_data3:/usr/local/apache2/htdocs
 
   proxy:
     build:
@@ -39,9 +33,10 @@ services:
       - webServer2
       - webServer3
     volumes:
-      - nginx_data:/nginx_data
+      - nginx_data:/etc/nginx
 
 volumes:
-    apache_data:
-
+    apache_data1:
+    apache_data2:
+    apache_data3:
     nginx_data:
