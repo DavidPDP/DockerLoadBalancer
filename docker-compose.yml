@@ -28,10 +28,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:80"
-    links:
-      - webServer1
-      - webServer2
-      - webServer3
     volumes:
       - nginx_data:/etc/nginx
 
